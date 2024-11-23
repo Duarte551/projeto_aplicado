@@ -6,8 +6,8 @@ const controller = require('./controllers/productController');
 const middleware = require('./middlewares/productMiddleware')
 
 router.get('/product', controller.getAll);
-router.post('/product', middleware.validateBody, controller.createProduct);
-router.delete('/product/:id', controller.deleteProduct);
-router.put('/product/:id', middleware.validateBody, controller.updateProduct);
+router.post('/product', middleware.validateToken, middleware.validateBody, controller.createProduct);
+router.delete('/product/:id', middleware.validateToken, controller.deleteProduct);
+router.put('/product/:id', middleware.validateToken, middleware.validateBody, controller.updateProduct);
 
 module.exports = router;
